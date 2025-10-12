@@ -13,6 +13,7 @@
             <input type="text" name="content" placeholder="Введи задачу" required />
             <button type="submit">Добавить в список</button>
         </form>
+
         <ul class="task-list">
             {% for id, task in tasks.items() %}
             <li class="task-item {% if task.completed %}completed{% endif %}">
