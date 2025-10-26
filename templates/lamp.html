@@ -3,55 +3,29 @@
 {% block title %}Советы по планированию{% endblock %}
 
 {% block content %}
-<section class="advice-section">
+<section class="advice-section" aria-label="Советы по эффективному планированию">
     <h2>Советы по эффективному планированию</h2>
 
     <div class="advice-list">
-        <div class="advice-item">
+        <article class="advice-item">
             <h3>🎯 Ставьте SMART-цели</h3>
             <p>Цели должны быть: Конкретные, Измеримые, Достижимые, Релевантные, Ограниченные по времени.</p>
-        </div>
+        </article>
 
-        <div class="advice-item">
+        <article class="advice-item">
             <h3>📝 Разбивайте большие цели</h3>
             <p>Большую цель разбейте на маленькие шаги. Так проще начать и видеть прогресс.</p>
-        </div>
+        </article>
 
-        <div class="advice-item">
+        <article class="advice-item">
             <h3>⏰ Определите сроки</h3>
             <p>На каждый шаг установите дедлайн. Это помогает оставаться сосредоточенным.</p>
-        </div>
+        </article>
 
-        <div class="advice-item">
+        <article class="advice-item">
             <h3>📊 Регулярно пересматривайте планы</h3>
             <p>Раз в неделю анализируйте прогресс и при необходимости корректируйте планы.</p>
-        </div>
+        </article>
     </div>
 </section>
-
-<style>
-.advice-section {
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.advice-item {
-    background: white;
-    padding: 1.5rem;
-    margin: 1rem 0;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    border-left: 4px solid #35424a;
-}
-
-.advice-item h3 {
-    color: #35424a;
-    margin-bottom: 0.5rem;
-}
-
-.advice-item p {
-    color: #666;
-    line-height: 1.6;
-}
-</style>
 {% endblock %}

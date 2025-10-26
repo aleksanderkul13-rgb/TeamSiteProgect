@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Выполненные планы{% endblock %}
+
+{% block content %}
+<section class="plans-section">
+    <h2>Ваши выполненные планы</h2>
+    <p class="subtitle">Здесь отображаются цели, которые вы успешно достигли! 🎉</p>
+
+    <div class="plans-container">
+        {% if plans %}
+            {% for plan in plans %}
+            <div class="plan-card completed">
+                <div class="plan-header">
+                    <h3>{{ plan.title }}</h3>
+                    <span class="badge completed">Выполнено</span>
+                </div>
+                {% if plan.description %}
+                <p class="plan-description">{{ plan.description }}</p>
+                {% endif %}
+                <div class="plan-date">Завершено: {{ plan.completed_date.strftime('%d.%m.%Y') }}</div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <div class="empty-state">
+                <p>У вас пока нет выполненных планов.</p>
+                <p>Начните достигать свои цели! 💪</p>
+            </div>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}
+

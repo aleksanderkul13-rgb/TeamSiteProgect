@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %}Текущие планы{% endblock %}
+
+{% block content %}
+<section class="plans-section">
+    <h2>Ваши текущие планы</h2>
+    <p class="subtitle">Цели, над которыми вы работаете</p>
+
+    <!-- Уведомления ТОЛЬКО на этой странице -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="flash-messages">
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <!-- Форма для добавления новой цели -->
+    <div class="add-plan-form">
+        <h3>Добавить новую цель</h3>
+        <form action="{{ url_for('add_plan') }}" method="POST">
+            <input type="text" name="title" placeholder="Например: 'Выучить Python за 3 месяца'" required>
+            <textarea name="description" placeholder="Описание цели (необязательно)" rows="3"></textarea>
+            <button type="submit">Добавить</button>
+        </form>
+    </div>
+
+    <div class="plans-container">
+        {% if plans %}
+            {% for plan in plans %}
+            <div class="plan-card active">
+                <div class="plan-header">
+                    <h3>{{ plan.title }}</h3>
+                    <span class="badge active">В процессе</span>
+                </div>
+                {% if plan.description %}
+                <p class="plan-description">{{ plan.description }}</p>
+                {% endif %}
+                <div class="plan-date">Создано: {{ plan.created_date.strftime('%d.%m.%Y') }}</div>
+                <div class="plan-actions">
+                    <a href="{{ url_for('complete_plan', plan_id=plan.id) }}" class="btn complete">Отметить выполненным</a>
+                    <a href="{{ url_for('delete_plan', plan_id=plan.id) }}" class="btn delete">Удалить</a>
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <div class="empty-state">
+                <p>У вас пока нет активных планов.</p>
+                <p>Добавьте первую цель выше! ✨</p>
+            </div>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}
